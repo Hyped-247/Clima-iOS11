@@ -31,8 +31,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManger.requestWhenInUseAuthorization()
-        
-        
+        locationManger.startUpdatingLocation()
     }
     
     
@@ -74,10 +73,22 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //Write the didUpdateLocations method here:
-    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // we need to get the last value because it is the best accurate.
+        let location = locations[locations.count - 1]
+        
+        
+        
+    }
     
     
     //Write the didFailWithError method here:
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // This is going to run if there was an error when trying to get the location.
+        print(error)
+        cityLabel.text = "Location unknown"
+        
+    }
     
     
     
