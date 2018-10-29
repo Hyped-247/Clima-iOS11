@@ -76,7 +76,20 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // we need to get the last value because it is the best accurate.
         let location = locations[locations.count - 1]
-        
+        if location.horizontalAccuracy > 0 {
+            // once you get your data store updating the location so the user does not get lose his energy.
+            locationManger.startUpdatingLocation()
+            
+//            print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
+            
+            let longitude = String(location.coordinate.longitude)
+            let latitude = String(location.coordinate.latitude)
+            let params : [String : String] = ["lat" : latitude, "lot" : longitude, "appid" : APP_ID]
+            
+            
+            
+            
+        }
         
         
     }
